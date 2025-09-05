@@ -1,4 +1,4 @@
-import File from './surveysparrow/fetch'
+import File from './surveysparrow/json'
 
 function App() {
 

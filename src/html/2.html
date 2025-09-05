@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+</head>
+<body>
+  <form id="myForm">
+    <label>Name: <input type="text" id="name" required></label><br><br>
+    <label>Email: <input type="email" id="email" required></label><br><br>
+    <label>Password: <input type="password" id="password" required></label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="error" style="color:red;"></p>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let error = document.getElementById("error");
+
+      if (name.length < 3) {
+        error.textContent = "Name must be at least 3 characters";
+      } else if (!email.includes("@")) {
+        error.textContent = "Enter a valid email";
+      } else if (password.length < 6) {
+        error.textContent = "Password must be at least 6 characters";
+      } else {
+        error.textContent = "";
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+</body>
+</html>

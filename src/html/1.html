@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Concepts Showcase</title>
+    <style>
+        /* Paste all the CSS from your stylesheet here */
+        /* ===== BASIC CSS ===== */
+
+        /* 1. CSS Box Model */
+        .box-model-example {
+          width: 300px;         /* Content width */
+          height: 200px;        /* Content height */
+          padding: 20px;        /* Space inside border */
+          border: 5px solid #333; /* Border around padding */
+          margin: 30px;         /* Space outside border */
+          box-sizing: border-box; /* Includes padding/border in width/height */
+          background-color: #f0f0f0;
+        }
+
+        /* 2. Display Types */
+        .display-block {
+          display: block;       /* Full width, new line */
+          background: lightblue;
+          padding: 10px;
+          margin: 5px 0;
+        }
+        .display-inline {
+          display: inline;      /* Only needed width, same line */
+          background: lightgreen;
+          padding: 10px;
+          margin: 5px;
+        }
+        .display-inline-block {
+          display: inline-block; /* Inline but respects width/height */
+          background: lightcoral;
+          width: 100px;
+          padding: 10px;
+          margin: 5px;
+        }
+        .display-none {
+          display: none;        /* Removes from layout */
+        }
+
+        /* 3. Positioning */
+        .positioning-container {
+          position: relative;
+          height: 200px;
+          border: 2px dashed #ccc;
+          margin: 20px 0;
+        }
+        .position-static {
+          position: static;
+          background: lightblue;
+        }
+        .position-relative {
+          position: relative;
+          top: 20px;
+          left: 30px;
+          background: lightgreen;
+          width: 100px;
+          padding: 10px;
+        }
+        .position-absolute {
+          position: absolute;
+          bottom: 10px;
+          right: 20px;
+          background: lightcoral;
+          width: 100px;
+          padding: 10px;
+        }
+        .position-fixed {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: lightgoldenrodyellow;
+          padding: 10px;
+          border: 1px solid #333;
+          z-index: 100;
+        }
+        .position-sticky {
+          position: sticky;
+          top: 0;
+          background: lightseagreen;
+          padding: 10px;
+          z-index: 10;
+        }
+
+        /* 4. Centering Techniques */
+        .center-container-flex {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 150px;
+          background: #f0f0f0;
+          margin: 10px 0;
+        }
+        .center-container-grid {
+          display: grid;
+          place-items: center;
+          height: 150px;
+          background: #e0e0e0;
+          margin: 10px 0;
+        }
+        .center-container-absolute {
+          position: relative;
+          height: 150px;
+          background: #d0d0d0;
+          margin: 10px 0;
+        }
+        .center-item {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: lightblue;
+          padding: 20px;
+        }
+
+        /* 5. Units */
+        .units-example {
+          font-size: 16px;
+          width: 80%;
+          padding: 2em;
+          margin: 1rem;
+          height: 50vh;
+          line-height: calc(1em + 8px);
+          background: #f0f0f0;
+          border: 1px solid #ccc;
+        }
+
+        /* ===== INTERMEDIATE CSS ===== */
+
+        /* 6. Flexbox */
+        .flex-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: stretch;
+          gap: 10px;
+          background: #f0f0f0;
+          padding: 10px;
+          margin: 10px 0;
+        }
+        .flex-item {
+          flex: 1;
+          min-width: 100px;
+          background: lightblue;
+          padding: 20px;
+          text-align: center;
+        }
+        .flex-item:nth-child(2) {
+          align-self: center;
+          background: lightgreen;
+        }
+
+        /* 7. CSS Grid */
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 100px auto;
+          grid-template-areas: 
+            "header header header"
+            "sidebar main main";
+          gap: 20px;
+          background: #f0f0f0;
+          padding: 20px;
+          margin: 10px 0;
+        }
+        .grid-header {
+          grid-area: header;
+          background: lightblue;
+          padding: 20px;
+        }
+        .grid-sidebar {
+          grid-area: sidebar;
+          background: lightgreen;
+          padding: 20px;
+        }
+        .grid-main {
+          grid-area: main;
+          background: lightcoral;
+          padding: 20px;
+        }
+
+        /* 8. Transitions & Animations */
+        .transition-example {
+          width: 100px;
+          height: 100px;
+          background: lightblue;
+          transition: all 0.3s ease-in-out;
+          margin: 10px 0;
+        }
+        .transition-example:hover {
+          width: 150px;
+          background: lightgreen;
+          transform: rotate(10deg);
+        }
+
+        @keyframes slideIn {
+          from { transform: translateX(-100%); }
+          to { transform: translateX(0); }
+        }
+
+        .animation-example {
+          width: 100px;
+          height: 100px;
+          background: lightcoral;
+          animation: slideIn 0.5s ease-out forwards;
+          margin: 20px 0;
+        }
+
+        /* 9. CSS Variables */
+        :root {
+          --primary-color: #4285f4;
+          --spacing-unit: 8px;
+        }
+
+        .var-example {
+          color: var(--primary-color);
+          padding: calc(var(--spacing-unit) * 2);
+          background: #f0f0f0;
+          border: 1px solid var(--primary-color);
+          margin: 10px 0;
+        }
+
+        /* 10. Media Queries */
+        .responsive-example {
+          display: flex;
+          background: #f0f0f0;
+          padding: 10px;
+          margin: 10px 0;
+        }
+        .responsive-item {
+          background: lightblue;
+          padding: 20px;
+          margin: 5px;
+          flex: 1;
+        }
+        @media (max-width: 768px) {
+          .responsive-example {
+            flex-direction: column;
+          }
+        }
+
+        /* ===== ADVANCED CSS ===== */
+
+        /* 11. CSS Filters */
+        .filter-example {
+          width: 200px;
+          height: 200px;
+          background: url('https://via.placeholder.com/200') center/cover;
+          filter: blur(2px) brightness(1.2) contrast(90%);
+          margin: 10px 0;
+        }
+        .backdrop-filter-example {
+          position: relative;
+          width: 300px;
+          height: 200px;
+          background: url('https://via.placeholder.com/300x200') center/cover;
+          margin: 10px 0;
+        }
+        .backdrop-filter-example::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          backdrop-filter: blur(5px);
+          background: rgba(255,255,255,0.3);
+        }
+
+        /* 12. Blend Modes */
+        .blend-example {
+          width: 300px;
+          height: 200px;
+          position: relative;
+          margin: 10px 0;
+        }
+        .blend-example div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+        .blend-bg {
+          background: linear-gradient(45deg, red, blue);
+        }
+        .blend-fg {
+          background: linear-gradient(45deg, green, yellow);
+          mix-blend-mode: multiply;
+        }
+
+        /* 13. Clip Path */
+        .clip-example {
+          width: 300px;
+          height: 200px;
+          background: linear-gradient(45deg, lightblue, lightgreen);
+          clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+          margin: 10px 0;
+        }
+
+        /* 14. Scroll Snap */
+        .scroll-container {
+          scroll-snap-type: y mandatory;
+          overflow-y: scroll;
+          height: 200px;
+          border: 1px solid #ccc;
+          margin: 10px 0;
+        }
+        .scroll-item {
+          height: 200px;
+          scroll-snap-align: start;
+          padding: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .scroll-item:nth-child(odd) {
+          background: lightblue;
+        }
+        .scroll-item:nth-child(even) {
+          background: lightgreen;
+        }
+
+        /* 15. CSS Counters */
+        .counter-container {
+          counter-reset: section;
+          background: #f0f0f0;
+          padding: 20px;
+          margin: 10px 0;
+        }
+        .counter-item {
+          padding: 5px 0;
+        }
+        .counter-item::before {
+          counter-increment: section;
+          content: counter(section) ". ";
+          font-weight: bold;
+        }
+
+        /* ===== MODERN CSS ===== */
+
+        /* 16. Container Queries */
+        .card-container {
+          container-type: inline-size;
+          margin: 10px 0;
+        }
+        .card {
+          display: flex;
+          flex-direction: column;
+          background: #f0f0f0;
+          padding: 20px;
+          border: 1px solid #ccc;
+        }
+        .card img {
+          width: 100%;
+          height: auto;
+        }
+        @container (min-width: 400px) {
+          .card {
+            flex-direction: row;
+          }
+          .card img {
+            width: 50%;
+          }
+        }
+
+        /* 17. Cascade Layers */
+        @layer base, components, utilities;
+
+        @layer base {
+          .layer-example h2 {
+            font-size: 2rem;
+            color: navy;
+          }
+        }
+
+        @layer utilities {
+          .text-center { 
+            text-align: center;
+          }
+        }
+
+        /* 18. Subgrid */
+        .grid-parent {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          background: #f0f0f0;
+          padding: 20px;
+          margin: 10px 0;
+        }
+        .grid-child {
+          display: grid;
+          grid-column: 1 / -1;
+          grid-template-columns: subgrid;
+          gap: 10px;
+        }
+        .grid-child div {
+          background: lightblue;
+          padding: 20px;
+          text-align: center;
+        }
+
+        /* 19. Logical Properties */
+        .logical-example {
+          margin-inline-start: 1rem;
+          padding-block-end: 2rem;
+          background: #f0f0f0;
+          border: 1px solid #ccc;
+          margin: 10px 0;
+          padding: 10px;
+        }
+
+        /* 20. Viewport Units */
+        .viewport-example {
+          height: 50vh;
+          width: 80vw;
+          font-size: clamp(1rem, 4vw, 2rem);
+          background: lightblue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 10px 0;
+          border: 1px solid #333;
+        }
+
+        /* ===== PERFORMANCE OPTIMIZATION ===== */
+        .optimized-styles {
+          width: 100px;
+          height: 100px;
+          background: lightgreen;
+          /* Will-change hints for browsers */
+          will-change: transform;
+          
+          /* Containment for isolation */
+          contain: layout paint;
+          
+          /* Optimized compositing */
+          transform: translateZ(0);
+          
+          /* Reduced motion preference */
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .optimized-styles {
+            animation: none;
+          }
+        }
+
+        /* ===== CSS METHODOLOGIES ===== */
+        /* BEM Example */
+        .card--bem {
+          background: #f0f0f0;
+          padding: 20px;
+          margin: 10px 0;
+        }
+        .card__header {
+          font-size: 1.5rem;
+          color: navy;
+        }
+        .card__content {
+          padding: 10px 0;
+        }
+        .card--highlight {
+          border: 2px solid gold;
+        }
+
+        /* Utility Classes */
+        .text-center { 
+          text-align: center;
+        }
+        .mt-1 { 
+          margin-top: 0.25rem;
+        }
+        .bg-lightblue {
+          background: lightblue;
+        }
+
+        /* ===== DEBUGGING HELPERS ===== */
+        .debug * {
+          outline: 1px solid red;
+        }
+
+        .debug-grid {
+          background: repeating-linear-gradient(
+            transparent, transparent 19px, #ddd 20px
+          );
+          min-height: 100px;
+          margin: 10px 0;
+        }
+
+        /* General styles for the demo page */
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        section {
+          margin-bottom: 40px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #eee;
+        }
+        h1, h2, h3 {
+          color: #333;
+        }
+        .example {
+          background: #f9f9f9;
+          padding: 15px;
+          margin: 10px 0;
+          border-radius: 5px;
+        }
+        .note {
+          font-style: italic;
+          color: #666;
+        }
+        .fixed-button {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #4285f4;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+          z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Concepts Showcase</h1>
+    
+    <section id="basic-css">
+        <h2>1. Basic CSS</h2>
+        
+        <h3>Box Model</h3>
+        <div class="box-model-example">
+            This demonstrates the CSS box model with width, height, padding, border, and margin.
+        </div>
+        
+        <h3>Display Types</h3>
+        <div class="display-block">Block element</div>
+        <span class="display-inline">Inline element</span>
+        <span class="display-inline">Another inline</span>
+        <div class="display-inline-block">Inline-block element</div>
+        <div class="display-none">This is hidden (display: none)</div>
+        
+        <h3>Positioning</h3>
+        <div class="positioning-container">
+            <div class="position-static">Static (default)</div>
+            <div class="position-relative">Relative (offset from normal position)</div>
+            <div class="position-absolute">Absolute (relative to container)</div>
+        </div>
+        <div class="position-fixed">Fixed (relative to viewport)</div>
+        <div class="position-sticky">Sticky (sticks when scrolling)</div>
+        <div style="height: 500px;">Scroll to see sticky and fixed positioning</div>
+        
+        <h3>Centering Techniques</h3>
+        <div class="center-container-flex">
+            <div>Centered with Flexbox</div>
+        </div>
+        <div class="center-container-grid">
+            <div>Centered with Grid</div>
+        </div>
+        <div class="center-container-absolute">
+            <div class="center-item">Centered with Absolute</div>
+        </div>
+        
+        <h3>CSS Units</h3>
+        <div class="units-example">
+            This demonstrates various CSS units: px, %, em, rem, vh, and calc().
+        </div>
+    </section>
+    
+    <section id="intermediate-css">
+        <h2>2. Intermediate CSS</h2>
+        
+        <h3>Flexbox</h3>
+        <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+            <div class="flex-item">Item 4</div>
+        </div>
+        
+        <h3>CSS Grid</h3>
+        <div class="grid-container">
+            <div class="grid-header">Header</div>
+            <div class="grid-sidebar">Sidebar</div>
+            <div class="grid-main">Main Content</div>
+        </div>
+        
+        <h3>Transitions & Animations</h3>
+        <div class="transition-example">Hover me for transition</div>
+        <div class="animation-example">Animation example</div>
+        
+        <h3>CSS Variables</h3>
+        <div class="var-example">
+            This uses CSS variables for color and spacing.
+        </div>
+        
+        <h3>Media Queries</h3>
+        <div class="responsive-example">
+            <div class="responsive-item">Item 1</div>
+            <div class="responsive-item">Item 2</div>
+            <div class="responsive-item">Item 3</div>
+        </div>
+        <p class="note">Resize the browser to see the layout change at 768px.</p>
+    </section>
+    
+    <section id="advanced-css">
+        <h2>3. Advanced CSS</h2>
+        
+        <h3>CSS Filters</h3>
+        <div class="filter-example"></div>
+        <div class="backdrop-filter-example"></div>
+        
+        <h3>Blend Modes</h3>
+        <div class="blend-example">
+            <div class="blend-bg"></div>
+            <div class="blend-fg"></div>
+        </div>
+        
+        <h3>Clip Path</h3>
+        <div class="clip-example"></div>
+        
+        <h3>Scroll Snap</h3>
+        <div class="scroll-container">
+            <div class="scroll-item">Item 1</div>
+            <div class="scroll-item">Item 2</div>
+            <div class="scroll-item">Item 3</div>
+            <div class="scroll-item">Item 4</div>
+        </div>
+        
+        <h3>CSS Counters</h3>
+        <div class="counter-container">
+            <div class="counter-item">First item</div>
+            <div class="counter-item">Second item</div>
+            <div class="counter-item">Third item</div>
+        </div>
+    </section>
+    
+    <section id="modern-css">
+        <h2>4. Modern CSS</h2>
+        
+        <h3>Container Queries</h3>
+        <div class="card-container" style="width: 100%;">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Placeholder">
+                <div>
+                    <h3>Card Title</h3>
+                    <p>This card will change layout based on container size.</p>
+                </div>
+            </div>
+        </div>
+        <p class="note">Resize the container to see the layout change at 400px.</p>
+        
+        <h3>Cascade Layers</h3>
+        <div class="layer-example">
+            <h2>This heading style comes from base layer</h2>
+            <p class="text-center">This text is centered with utility layer</p>
+        </div>
+        
+        <h3>Subgrid</h3>
+        <div class="grid-parent">
+            <div class="grid-child">
+                <div>Subgrid Item 1</div>
+                <div>Subgrid Item 2</div>
+                <div>Subgrid Item 3</div>
+            </div>
+        </div>
+        
+        <h3>Logical Properties</h3>
+        <div class="logical-example">
+            This uses margin-inline-start and padding-block-end which work in both LTR and RTL contexts.
+        </div>
+        
+        <h3>Viewport Units & Clamp</h3>
+        <div class="viewport-example">
+            Responsive text using clamp()
+        </div>
+    </section>
+    
+    <section id="performance">
+        <h2>5. Performance Optimization</h2>
+        <div class="optimized-styles">
+            Optimized element with will-change, containment, and transform.
+        </div>
+    </section>
+    
+    <section id="methodologies">
+        <h2>6. CSS Methodologies</h2>
+        
+        <h3>BEM Example</h3>
+        <div class="card--bem card--highlight">
+            <div class="card__header">BEM Card</div>
+            <div class="card__content">This demonstrates Block__Element--Modifier syntax.</div>
+        </div>
+        
+        <h3>Utility Classes</h3>
+        <div class="text-center bg-lightblue mt-1">
+            This uses utility classes for text alignment, background color, and margin.
+        </div>
+    </section>
+    
+    <section id="debugging">
+        <h2>7. Debugging Helpers</h2>
+        <button onclick="document.body.classList.toggle('debug')">Toggle Debug Outline</button>
+        <div class="debug-grid"></div>
+    </section>
+    
+    <button class="fixed-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
+    
+    <script>
+        // Simple script to toggle debug mode
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any interactive functionality here if needed
+        });
+    </script>
+</body>
+</html>

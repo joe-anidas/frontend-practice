@@ -1,71 +1,26 @@
 import React from "react";
-import data from "./data.json"; // Import local JSON
+import users from "./data.json"; // ✅ Import JSON
+import "./App.css";
 
-function App() {
-  const styles = {
-    container: {
-      margin: "30px auto",
-      width: "80%",
-      textAlign: "center",
-      fontFamily: "Arial, sans-serif"
-    },
-    heading: {
-      marginBottom: "20px"
-    },
-    table: {
-      width: "100%",
-      borderCollapse: "collapse",
-      margin: "0 auto"
-    },
-    th: {
-      border: "1px solid #ddd",
-      padding: "10px",
-      backgroundColor: "#f4f4f4"
-    },
-    td: {
-      border: "1px solid #ddd",
-      padding: "10px"
-    },
-    rowEven: {
-      backgroundColor: "#f9f9f9"
-    },
-    rowHover: {
-      backgroundColor: "#f1f1f1"
-    }
-  };
-
+function Card({ name, age, bio }) {
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>User Data</h2>
-      <table style={styles.table}>
-        <thead>
-          <tr>
-            <th style={styles.th}>ID</th>
-            <th style={styles.th}>Name</th>
-            <th style={styles.th}>Age</th>
-            <th style={styles.th}>City</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((user, index) => (
-            <tr
-              key={user.id}
-              style={index % 2 === 0 ? styles.rowEven : {}}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.rowHover.backgroundColor)}
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = index % 2 === 0 ? styles.rowEven.backgroundColor : "white")
-              }
-            >
-              <td style={styles.td}>{user.id}</td>
-              <td style={styles.td}>{user.name}</td>
-              <td style={styles.td}>{user.age}</td>
-              <td style={styles.td}>{user.city}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <article className="card">
+      <h3 className="title">{name}</h3>
+      <p className="meta">{age} years old</p>
+      <p className="desc">{bio}</p>
+    </article>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <div className="app">
+      <h1>Local JSON in Card Component</h1>
+      <div className="grid">
+        {users.map((user) => (
+          <Card key={user.id} {...user} />
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -43,8 +43,7 @@ function App() {
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <tr
-              key={user.id}
+            <tr key={user.id}
               style={{
                 backgroundColor: index % 2 === 0 ? "#f9f9f9" : "white"
               }}
